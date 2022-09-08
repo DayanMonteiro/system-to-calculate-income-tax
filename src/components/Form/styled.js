@@ -23,13 +23,11 @@ export const Title = styled("h1", {
 });
 
 export const BoxDetail = styled("div", {
-  // backgroundColor: "red",
   display: "flex",
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
   padding: "2rem",
-  // boxShadow: "0 0 10px rgba(0,0,0,0.6)",
   boxShadow: "$default",
 });
 

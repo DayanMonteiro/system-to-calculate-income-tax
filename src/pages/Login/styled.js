@@ -15,7 +15,6 @@ export const Content = styled("div", {
   flexDirection: "column",
   alignItems: "center",
   justifyContent: "center",
-  // backgroundColor: "blue",
 });
 
 export const Image = styled("img", {

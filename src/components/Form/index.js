@@ -1,12 +1,8 @@
 import Input from "../InputText";
 
-import { useState } from "react";
-// import { useSnackbar } from "notistack";
-
 import * as S from "./styled";
 import cpfMask from "../../utils/mask/cpfMask";
 import financialMask from "../../utils/mask/financialMask";
-// import schema from "./validations";
 
 const Form = ({ employee, setEmployee, saveEmployee }) => {
   return (

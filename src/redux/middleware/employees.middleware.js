@@ -75,7 +75,7 @@ export const getByIdEmployee = (id) => {
     try {
       let response = await employeeApi.get(`/employee/${id}`);
       if (response.status === 200 || response.status === 201) {
-        dispatch(setEmployee({ employees: response.data.data }));
+        dispatch(setEmployee({ employee: response.data }));
       } else {
         console.log("There is one or more errors.");
       }

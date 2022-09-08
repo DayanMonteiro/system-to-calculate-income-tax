@@ -7,7 +7,6 @@ export const ContainerTitle = styled("div", {
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "$primary20",
-  // width: "100%",
   height: "5rem",
 });
 

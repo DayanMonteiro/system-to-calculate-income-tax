@@ -13,7 +13,6 @@ export const Button = styled("button", {
   fontWeight: "$regular",
   fontSize: "$sm",
   transition: "background-color 300ms ease",
-  //width: "100%",
 
   variants: {
     variant: {
@@ -37,8 +36,6 @@ export const Button = styled("button", {
         textTransform: "uppercase",
         "&:hover": {
           backgroundColor: "$primary1",
-          // border: "1px solid $primary500",
-          //color: "$primary20",
         },
       },
       brand: {
@@ -153,5 +150,3 @@ export const Button = styled("button", {
     },
   },
 });
-
-// export type ButtonVariants = Stitches.VariantProps<typeof Button>;

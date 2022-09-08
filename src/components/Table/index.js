@@ -38,19 +38,19 @@ const Table = () => {
   function reduceInstallment(value) {
     const valueRemoveMask = removeMask(value);
     if (valueRemoveMask <= 190398) {
-      return valueRemoveMask;
+      return "Isento";
     }
     if (valueRemoveMask >= 190399 && valueRemoveMask <= 282665) {
-      return valueRemoveMask * 0.075 + 14280;
+      return Math.ceil(valueRemoveMask * 0.075 + 14280);
     }
     if (valueRemoveMask >= 282666 && valueRemoveMask <= 375105) {
-      return valueRemoveMask * 0.15 + 35408;
+      return Math.ceil(valueRemoveMask * 0.15 + 35408);
     }
     if (valueRemoveMask >= 375106 && valueRemoveMask <= 466468) {
-      return valueRemoveMask * 0.225 + 63613;
+      return Math.ceil(valueRemoveMask * 0.225 + 63613);
     }
     if (valueRemoveMask > 466468) {
-      return valueRemoveMask * 0.275 + 86936;
+      return Math.ceil(valueRemoveMask * 0.275 + 86936);
     }
     return valueRemoveMask;
   }
@@ -58,31 +58,31 @@ const Table = () => {
   function discount(value, numberDependents) {
     const valueRemoveMask = removeMask(value);
     if (valueRemoveMask <= 190398) {
-      return (
+      return Math.ceil(
         valueRemoveMask -
-        valueRemoveMask * 0.075 -
-        16456 * parseInt(numberDependents)
+          valueRemoveMask * 0.075 -
+          16456 * parseInt(numberDependents)
       );
     }
     if (valueRemoveMask >= 190399 && valueRemoveMask <= 282665) {
-      return (
+      return Math.ceil(
         valueRemoveMask -
-        valueRemoveMask * 0.15 -
-        16456 * parseInt(numberDependents)
+          valueRemoveMask * 0.15 -
+          16456 * parseInt(numberDependents)
       );
     }
     if (valueRemoveMask >= 282666 && valueRemoveMask <= 375105) {
-      return (
+      return Math.ceil(
         valueRemoveMask -
-        valueRemoveMask * 0.225 -
-        16456 * parseInt(numberDependents)
+          valueRemoveMask * 0.225 -
+          16456 * parseInt(numberDependents)
       );
     }
     if (valueRemoveMask > 466468) {
-      return (
+      return Math.ceil(
         valueRemoveMask -
-        valueRemoveMask * 0.275 -
-        16456 * parseInt(numberDependents)
+          valueRemoveMask * 0.275 -
+          16456 * parseInt(numberDependents)
       );
     }
     return valueRemoveMask;
@@ -121,13 +121,22 @@ const Table = () => {
                 <S.TableRow key={row.id}>
                   <S.ColumnTable>{row.name}</S.ColumnTable>
                   <S.ColumnTable>{row.cpf}</S.ColumnTable>
-                  <S.ColumnTable>{financialMask(row.salary)}</S.ColumnTable>
+                  <S.ColumnTable> R$ {financialMask(row.salary)}</S.ColumnTable>
                   <S.ColumnTable>
-                    {discount(row.salary, row.dependents)}
+                    R${" "}
+                    {financialMask(
+                      discount(row.salary, row.dependents).toString()
+                    )}
                   </S.ColumnTable>
                   <S.ColumnTable>{row.dependents}</S.ColumnTable>
 
-                  <S.ColumnTable>{reduceInstallment(row.salary)}</S.ColumnTable>
+                  <S.ColumnTable>
+                    {reduceInstallment(row.salary).toString() !== "Isento"
+                      ? `R$  ${financialMask(
+                          reduceInstallment(row.salary).toString()
+                        )}`
+                      : "Isento"}
+                  </S.ColumnTable>
 
                   <S.ColumnTableIcon>
                     <S.ButtonNew
