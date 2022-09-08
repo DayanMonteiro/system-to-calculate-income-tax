@@ -19,7 +19,7 @@ const Login = () => {
             variant="text"
             onClick={() => navigate("employee-table")}
           >
-            Enviar
+            Entrar
           </S.ButtonSubmit>
         </S.FormLogin>
       </S.Content>
